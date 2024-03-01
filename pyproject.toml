@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61.0", "numpy>=1.26.3", "pandas>=2.2.0","matplotlib>=3.8.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qPCR_analysis"
+version = "0.0.1"
+authors = [
+	{name="Noah Helton", email="heltonn@umich.edu"}, 
+]
+description = "A small package to analyze and plot RT-qPCR data"
+readme= "README.md"
+requires-python = ">=3.8"
+classifiers = [
+	"Programming Language :: Python :: 3",
+	"License :: OSI Approved ::MIT License",
+	"Operating System :: OS Independent",
+]
