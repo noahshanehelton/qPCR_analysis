@@ -1,10 +1,10 @@
 ﻿Gene,Condition,Replicate,Ct1,Ct2,Ct3
-GOI,Treated,1,18.02,18.012,18.013
-GOI,Treated,2,16.76,16.774,16.743
-GOI,Treated,3,16.912,16.92,16.92
-GOI,Untreated,1,19.194,19.277,19.281
-GOI,Untreated,2,17.646,17.678,17.667
-GOI,Untreated,3,18.024,18.066,18.081
+GOI,Treated,1,14.273,14.286,14.248
+GOI,Treated,2,14.713,14.703,14.661
+GOI,Treated,3,14.317,14.304,14.228
+GOI,Untreated,1,17.017,17.016,17.002
+GOI,Untreated,2,17.812,17.779,17.718
+GOI,Untreated,3,17.076,17.065,17.037
 Control,Treated,1,14.873,14.898,14.9
 Control,Treated,2,13.941,13.951,13.952
 Control,Treated,3,14.328,14.324,14.252
