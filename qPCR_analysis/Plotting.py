@@ -41,5 +41,31 @@ def plot_efficiency_graph(df, df_primer_efficiency, gene):
     plt.show()
 
 
+def plot_gene_expression_ratio(df):
+    # Plotting the average GER with SEM as error bars, and creating empty bars
+    ax = df.plot(kind='bar', x='Condition', y='Average GER', yerr='SEM GER', 
+                 error_kw=dict(capsize=2), legend=False, linewidth=1.5,
+                 edgecolor='black', facecolor='none')
 
+    # Adding individual points
+    for i in range(len(df)):
+        # Extract the individual gene expression ratios for the respective conditions
+        ratios = df.loc[i, ["Gene Expression Ratio 1", "Gene Expression Ratio 2", "Gene Expression Ratio 3"]]
+        
+        # We'll add some jitter (.1 range) to the x-axis position so points don't overlap.
+        x_values = np.random.normal(i, 0.05, size=len(ratios)) 
+        
+        # Plot each point
+        for x, ratio in zip(x_values, ratios):
+            plt.plot(x, ratio, 'o', color=np.random.rand(3,), alpha=0.6) # random color for each point
+
+    # Improving the plot aesthetics
+    ax.set_ylabel('Gene Expression Ratio')
+    ax.set_title('Average GER and SEM with individual data points')
+    
+    # Customize x-tick labels for better appearance
+    ax.set_xticklabels(df["Condition"], rotation=0)
+
+    # Show the plot
+    plt.show()
 

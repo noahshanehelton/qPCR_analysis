@@ -162,12 +162,3 @@ def pfaffl(GOI, control_gene, experimental_condition, control_condition, E_GOI, 
 
     return pfaffl_df
 
-
-df = pfaffl('GOI', 'Control', 'Treated', 'Untreated', 100, 100, myData)
-df
-
-
-
-
-#def polysome_analyis(df):
-#    return percent_df
