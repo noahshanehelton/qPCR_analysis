@@ -40,6 +40,6 @@ def plot_efficiency_graph(df, df_primer_efficiency, gene):
     # Show the plot
     plt.show()
 
-
-
+# Example usage:
+# plot_efficiency_graph(df_gene_data, df_primer_efficiency, 'GeneA')
 
