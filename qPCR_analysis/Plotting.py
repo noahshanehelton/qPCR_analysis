@@ -1,4 +1,4 @@
-# +
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -22,6 +22,7 @@ def plot_efficiency_graph(df, df_primer_efficiency, gene):
     sem = gene_data['SEM']  # Assuming SEM column contains standard error values
     
     # Plot the data
+
     fig, ax = plt.subplots()
     # Adjust to use ax instead of plt so we can return the fig for users to save
     ax.plot(log_dilution, ct_value, marker='o', color='blue', label=f'{gene} Ct_value')

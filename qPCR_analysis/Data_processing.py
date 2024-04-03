@@ -33,8 +33,6 @@ def primer_effiency_calc(slope):
     efficiency = (10**(exponent)-1 ) * 100
     return round(efficiency,2)
 
-
-
 def primer_efficiency(df, gene):
     """
     Input dataframe from import and tidy data 
@@ -72,7 +70,6 @@ def delta_Ct(GOI, control_gene):
     Output: 
     '''
     dCT = GOI - control_gene
-
     return dCT
 
 def delta_delta_Ct(Gene, experimental_condition, control_condition):

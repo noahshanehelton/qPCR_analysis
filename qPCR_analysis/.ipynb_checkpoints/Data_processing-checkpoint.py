@@ -1,4 +1,4 @@
-# +
+
 import numpy as np
 import pandas as pd 
 from scipy import stats
@@ -16,6 +16,7 @@ def import_and_tidy_data(file_path):
     This will import the csv file and average technical Ct replicates 
     '''
     df = pd.read_csv(file_path)
+
     expected_headers1 = ['Gene', 'Condition', 'Replicate', 'Ct1', 'Ct2', 'Ct3'] #for GER tests
     expected_headers2 = ['Gene', 'Dilution', 'Replicate', 'Ct1', 'Ct2', 'Ct3']  #for dilution series and    
     expected_headers3 = ['Gene', 'Fraction', 'Condition', 'Ct1', 'Ct2', 'Ct3'] #for polysome profiling qPCR

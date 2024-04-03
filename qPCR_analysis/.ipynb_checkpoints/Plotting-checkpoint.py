@@ -1,4 +1,4 @@
-# +
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -33,7 +33,6 @@ def plot_efficiency_graph(df, df_primer_efficiency, gene):
     plt.xlabel('log_dilution')
     plt.ylabel('Ct_value')
 
-    # Add custom legend for slope, R_value, and primer efficiency
     legend_text = f'Slope: {slope:.2f}\nR_value: {r_value:.2f}\nPrimer Efficiency: {primer_efficiency:.2f}'
     plt.text(0.65, 0.95, legend_text, transform=plt.gca().transAxes, fontsize=10, verticalalignment='top', bbox=dict(facecolor='none', edgecolor='black', boxstyle='round,pad=0.5'))
 
@@ -110,4 +109,3 @@ def plot_gene_fractions(df, gene_name):
 
 
 #def save_plot(plot)
-
