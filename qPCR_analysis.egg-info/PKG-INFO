@@ -1,7 +1,7 @@
 Metadata-Version: 2.1
 Name: qPCR_analysis
 Version: 0.0.1
-Summary: A small package to analyze and plot RT-qPCR data
+Summary: A small package to analyze and plot RTqPCR data
 Author-email: Noah Helton <heltonn@umich.edu>
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved ::MIT License
@@ -10,3 +10,7 @@ Requires-Python: >=3.8
 Description-Content-Type: text/markdown
 
 # qPCR_analysis
+
+This tool will be used to analyze qPCR data in a rigorous and reproducible manner. 
+Primary functionalities will include: 
+**Primer Efficiency Calculations**, **Pfaffl Method Analysis**, and **Percent enrichment in polysome profiles**

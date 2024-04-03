@@ -1,9 +1,9 @@
 README.md
 pyproject.toml
+qPCR_analysis/Data_processing.py
+qPCR_analysis/Plotting.py
+qPCR_analysis/Statistics.py
 qPCR_analysis/__init__.py
-qPCR_analysis/module1.py
-qPCR_analysis/module2.py
-qPCR_analysis/module3.py
 qPCR_analysis.egg-info/PKG-INFO
 qPCR_analysis.egg-info/SOURCES.txt
 qPCR_analysis.egg-info/dependency_links.txt
