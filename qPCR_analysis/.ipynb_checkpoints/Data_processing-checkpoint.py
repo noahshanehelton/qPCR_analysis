@@ -111,8 +111,6 @@ def pfaffl(GOI, control_gene, experimental_condition, control_condition, E_GOI, 
 
     
     '''
-
-
     #Get control averages 
     average_GOI = df[(df['Condition'] == control_condition) & (df['Gene'] == control_gene)]['Ct_value'].mean()
     average_control = df[(df['Condition'] == control_condition) & (df['Gene'] == GOI)]['Ct_value'].mean()
@@ -160,24 +158,20 @@ def pfaffl(GOI, control_gene, experimental_condition, control_condition, E_GOI, 
     return pfaffl_df
 
 
-polysome_test = import_and_tidy_data('data/polysome_profile_testdata.csv')
+#polysome_test = import_and_tidy_data('data/polysome_profile_testdata.csv')
 #print(polysome_test)
 
+def calculate_polysome_diff(reference_cts, cts):
+    return reference_cts - cts
+    
+def calculate_2_delta_ct_polysome(delta_ct):
+    return 2 ** delta_ct
+
+def calculate_percentages(total, column):
+    return (column * 100) / total if total != 0 else 0
 
 def polysome_profiling_analysis(df, gene, condition, reps):
-    # Helper function to calculate delta Ct
-    def calculate_delta_ct(reference_cts, cts):
-        return reference_cts - cts
     
-    # Helper function to calculate 2^-deltaCT
-    def calculate_2_delta_ct(delta_ct):
-        return 2 ** delta_ct
-    
-    # Helper function to calculate percentages
-    def calculate_percentages(total, column):
-        return (column * 100) / total if total != 0 else 0
-    
-    # Ensure we're working with a copy to avoid SettingWithCopyWarning
     subset_df = df[(df['Condition'] == condition) & (df['Gene'] == gene)].copy()
 
     # Calculate the baseline CT values for Fraction 1 to be used as reference
@@ -191,15 +185,16 @@ def polysome_profiling_analysis(df, gene, condition, reps):
         percent_col = f'Percent in fraction R{r}'
         
         # Calculate delta Ct
-        delta_ct = calculate_delta_ct(baseline_cts[replicate], subset_df[replicate])
+        delta_ct = calculate_polysome_diff(baseline_cts[replicate], subset_df[replicate])
         subset_df.loc[:, delta_ct_col] = delta_ct
         
         # Calculate 2^-deltaCT
-        subset_df.loc[:, two_delta_ct_col] = calculate_2_delta_ct(delta_ct)
+        subset_df.loc[:, two_delta_ct_col] = calculate_2_delta_ct_polysome(delta_ct)
         
         # Calculate the percentage for each replicate
         sum_2_delta_ct = subset_df[two_delta_ct_col].sum()
         subset_df.loc[:, percent_col] = calculate_percentages(sum_2_delta_ct, subset_df[two_delta_ct_col])
+        print(subset_df[two_delta_ct_col])
     
     
     
@@ -214,4 +209,4 @@ def polysome_profiling_analysis(df, gene, condition, reps):
     return subset_df.reset_index(drop=True)
 
 
-polysome_profiling_analysis(polysome_test, 'GOI','Untreated', 3) 
+#polysome_profiling_analysis(polysome_test, 'GOI','Untreated', 3) 

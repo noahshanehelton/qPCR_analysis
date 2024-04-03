@@ -54,7 +54,6 @@ def plot_gene_expression_ratio(df, gene):
         # Extract the individual gene expression ratios for the respective conditions
         ratios = df.loc[i, ["Gene Expression Ratio 1", "Gene Expression Ratio 2", "Gene Expression Ratio 3"]]
         
-        # We'll add some jitter (.1 range) to the x-axis position so points don't overlap.
         x_values = np.random.normal(i, 0.05, size=len(ratios)) 
         
         # Plot each point
