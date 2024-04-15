@@ -121,8 +121,8 @@ def pfaffl(GOI, control_gene, experimental_condition, control_condition, E_GOI, 
     df.loc[df['Gene'] == control_gene, 'DeltaCt'] = df['Ct_value'] - average_control
     df.loc[df['Gene'] == GOI, 'DeltaCt'] = df['Ct_value'] - average_GOI
     df = df[['Gene', 'Condition', 'DeltaCt','Replicate']]
-    df_goi = df[df['Gene'] == 'GOI']  # DataFrame containing rows where 'Gene' is 'GOI'
-    df_control = df[df['Gene'] == 'Control']  # DataFrame containing rows where 'Gene' is 'Control'
+    df_goi = df[df['Gene'] == GOI]  # DataFrame containing rows where 'Gene' is 'GOI'
+    df_control = df[df['Gene'] == control_gene]  # DataFrame containing rows where 'Gene' is 'Control'
     df_goi.reset_index(drop=True, inplace=True)
     df_control.reset_index(drop=True, inplace=True)
 
@@ -194,7 +194,7 @@ def polysome_profiling_analysis(df, gene, condition, reps):
         # Calculate the percentage for each replicate
         sum_2_delta_ct = subset_df[two_delta_ct_col].sum()
         subset_df.loc[:, percent_col] = calculate_percentages(sum_2_delta_ct, subset_df[two_delta_ct_col])
-        print(subset_df[two_delta_ct_col])
+        #print(subset_df[two_delta_ct_col])
     
     
     

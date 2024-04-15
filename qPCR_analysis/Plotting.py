@@ -45,9 +45,12 @@ def plot_efficiency_graph(df, df_primer_efficiency, gene):
 
 def plot_gene_expression_ratio(df, gene):
     # Plotting the average GER with SEM as error bars, and creating empty bars
-    fig, ax = df.plot(kind='bar', x='Condition', y='Average GER', yerr='SEM GER', 
-                 error_kw=dict(capsize=2), legend=False, linewidth=1.5,
-                 edgecolor='black', facecolor='none')
+    fig, ax = plt.subplots()
+    
+    # Plotting the average GER with SEM as error bars, and creating empty bars
+    df.plot(ax=ax, kind='bar', x='Condition', y='Average GER', yerr='SEM GER', 
+             error_kw=dict(capsize=2), legend=False, linewidth=1.5,
+             edgecolor='black', facecolor='none')
     fold_change = 0
     # Adding individual points
     for i in range(len(df)):
@@ -67,7 +70,7 @@ def plot_gene_expression_ratio(df, gene):
     # Customize x-tick labels for better appearance
     ax.set_xticklabels(df["Condition"], rotation=0)
 
-    ax.set_title(f"Plot for {gene}'s gene expression ratio made with a fold change of {} from {df} and {df}")
+    ax.set_title(f"Plot for {gene}'s gene expression ratio made from {df} and {df}")
     return fig
 
 
@@ -82,9 +85,9 @@ def plot_gene_fractions(df, gene_name):
         gene_name (str): The name of the gene to be used in the title of the plot.
     """
     
-    fig, ax = plt.figure(figsize=(10, 6))
-
-    # Translucent lines for individual replicates
+    fig, ax = plt.subplots(figsize=(10, 6))  # Create a figure and an Axes object
+    
+    # Translucent lines for individual replicates    
     ax.plot(df.index, df['Percent in fraction R1'], label='R1', color='blue', alpha=0.35)
     ax.plot(df.index, df['Percent in fraction R2'], label='R2', color='red', alpha=0.35)
     ax.plot(df.index, df['Percent in fraction R3'], label='R3', color='green', alpha=0.35)
